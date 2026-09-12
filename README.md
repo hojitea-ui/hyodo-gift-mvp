@@ -58,11 +58,11 @@ npm run dev
 
 **업로드 화면** (실제 조사 데이터 20행, 정상 20행/오류 0행)
 
-![업로드 화면](./docs/screenshots/upload.png)
+![업로드 화면](./docs/screenshots/upload.png?v=576642c)
 
 **대시보드 화면** (가격 요약 카드 + 히스토그램 + 분포/교차표)
 
-![대시보드 화면](./docs/screenshots/dashboard.png)
+![대시보드 화면](./docs/screenshots/dashboard.png?v=576642c)
 
 ## 폴더 구조 및 핵심 로직
 
