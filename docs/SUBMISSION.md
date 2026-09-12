@@ -6,7 +6,7 @@ LMS에 명시된 제출물/루브릭 기준으로 정리한 인덱스다.
 
 | 제출물 | 형식 | 링크 |
 |---|---|---|
-| 실행 가능한 웹 서비스 | GitHub 저장소 + 배포 URL | GitHub: [hojitea-ui/hyodo-gift-mvp](https://github.com/hojitea-ui/hyodo-gift-mvp) · 배포: [hyodo-gift-f8xmkn0fn-hojitea-ui.vercel.app](https://hyodo-gift-f8xmkn0fn-hojitea-ui.vercel.app) |
+| 실행 가능한 웹 서비스 | GitHub 저장소 + 배포 URL | GitHub: [hojitea-ui/hyodo-gift-mvp](https://github.com/hojitea-ui/hyodo-gift-mvp) · 배포: https://hyodo-gift-mvp.vercel.app/ |
 | 기획 문서 1장 | 서비스 개요·타겟 사용자·해결 문제 | [docs/ONE_PAGER.md](./ONE_PAGER.md) |
 | 회고록 1장 | AI와 협업하며 배운 점·어려웠던 점 | [docs/RETROSPECTIVE.md](./RETROSPECTIVE.md) |
 | 시연 영상 | 3분 이내 | 생략 (본인 확인) |
