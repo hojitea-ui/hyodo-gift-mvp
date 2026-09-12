@@ -235,5 +235,3 @@ async function parseFile(file: File): Promise<{
 > [[prefers-incremental-build-not-full-mvp-dump]]에 따라, 이 순서를 한 세션에 몰아서 구현하지 않고 위 1~7단계를 각각 작은 단위로 나눠 진행하며 매 단계 확인을 받는다.
 
 ---
-
-이걸로 기술 명세서 초안(1~11절)이 다 끝났어. PRD + TECH_SPEC 둘 다 완성됐는데, 이제 실제 구현(1단계: 프로젝트 스캐폴딩)으로 넘어갈까, 아니면 두 문서를 다시 한 번 처음부터 훑어보고 싶은 부분이 있을까?
