@@ -14,22 +14,19 @@ function FrequencyList({ title, items }: { title: string; items: FieldFrequency[
   const max = Math.max(1, ...items.map((item) => item.count));
 
   return (
-    <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-      <h3 className="mb-3 text-sm font-medium text-zinc-700 dark:text-zinc-300">{title}</h3>
+    <div className="rounded-xl border border-border bg-surface p-5">
+      <h3 className="mb-3 font-display text-base text-ink">{title}</h3>
       {items.length === 0 ? (
-        <p className="text-sm text-zinc-500">데이터 없음</p>
+        <p className="text-sm text-ink-muted">데이터 없음</p>
       ) : (
         <ul className="flex flex-col gap-2">
           {items.map((item) => (
             <li key={item.value} className="flex items-center gap-3 text-sm">
               <span className="w-24 shrink-0 truncate">{item.value}</span>
-              <div className="h-2 flex-1 rounded-full bg-zinc-100 dark:bg-zinc-800">
-                <div
-                  className="h-2 rounded-full bg-zinc-500"
-                  style={{ width: `${(item.count / max) * 100}%` }}
-                />
+              <div className="h-2 flex-1 rounded-full bg-accent-soft">
+                <div className="h-2 rounded-full bg-accent" style={{ width: `${(item.count / max) * 100}%` }} />
               </div>
-              <span className="w-10 shrink-0 text-right text-zinc-500">{item.count}건</span>
+              <span className="tabular w-10 shrink-0 text-right text-ink-muted">{item.count}건</span>
             </li>
           ))}
         </ul>
@@ -56,16 +53,14 @@ export default function CompositionInsights({ products }: CompositionInsightsPro
       </div>
 
       {boxTypeOrder.length > 0 && combinationTypeOrder.length > 0 && (
-        <div className="overflow-x-auto rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-          <h3 className="mb-3 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-            용돈박스형태 × 결합상품유형 교차표
-          </h3>
+        <div className="overflow-x-auto rounded-xl border border-border bg-surface p-5">
+          <h3 className="mb-3 font-display text-base text-ink">용돈박스형태 × 결합상품유형 교차표</h3>
           <table className="min-w-full text-left text-sm">
             <thead>
               <tr>
-                <th className="px-3 py-2 font-medium text-zinc-500">형태 \ 유형</th>
+                <th className="px-3 py-2 font-medium text-ink-muted">형태 \ 유형</th>
                 {combinationTypeOrder.map((combinationType) => (
-                  <th key={combinationType} className="px-3 py-2 font-medium text-zinc-500">
+                  <th key={combinationType} className="px-3 py-2 font-medium text-ink-muted">
                     {combinationType}
                   </th>
                 ))}
@@ -73,10 +68,10 @@ export default function CompositionInsights({ products }: CompositionInsightsPro
             </thead>
             <tbody>
               {boxTypeOrder.map((boxType) => (
-                <tr key={boxType} className="border-t border-zinc-200 dark:border-zinc-800">
-                  <td className="px-3 py-2 font-medium">{boxType}</td>
+                <tr key={boxType} className="border-t border-border">
+                  <td className="px-3 py-2 font-medium text-ink">{boxType}</td>
                   {combinationTypeOrder.map((combinationType) => (
-                    <td key={combinationType} className="px-3 py-2 text-zinc-600 dark:text-zinc-400">
+                    <td key={combinationType} className="tabular px-3 py-2 text-ink-muted">
                       {crossLookup.get(`${boxType}||${combinationType}`) ?? "-"}
                     </td>
                   ))}
@@ -87,16 +82,16 @@ export default function CompositionInsights({ products }: CompositionInsightsPro
         </div>
       )}
 
-      <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-        <h3 className="mb-3 text-sm font-medium text-zinc-700 dark:text-zinc-300">구성 토큰 랭킹</h3>
+      <div className="rounded-xl border border-border bg-surface p-5">
+        <h3 className="mb-3 font-display text-base text-ink">구성 토큰 랭킹</h3>
         {compositionTokens.length === 0 ? (
-          <p className="text-sm text-zinc-500">구성 정보가 있는 상품이 없음</p>
+          <p className="text-sm text-ink-muted">구성 정보가 있는 상품이 없음</p>
         ) : (
           <ul className="flex flex-col gap-2">
             {compositionTokens.map((token) => (
               <li key={token.token} className="flex items-center justify-between text-sm">
                 <span className="truncate">{token.token}</span>
-                <span className="text-zinc-500">
+                <span className="tabular text-ink-muted">
                   {token.count}건 ({Math.round(token.ratio * 100)}%)
                 </span>
               </li>

@@ -59,10 +59,8 @@ export default function UploadPanel({ hasExistingData, onConfirm }: UploadPanelP
         }}
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
-        className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-6 py-12 text-center transition-colors ${
-          isDragging
-            ? "border-zinc-950 bg-zinc-100 dark:border-zinc-50 dark:bg-zinc-900"
-            : "border-zinc-300 dark:border-zinc-700"
+        className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-6 py-12 text-center transition-colors ${
+          isDragging ? "border-accent bg-accent-soft" : "border-border bg-surface"
         }`}
       >
         <input
@@ -71,29 +69,30 @@ export default function UploadPanel({ hasExistingData, onConfirm }: UploadPanelP
           className="hidden"
           onChange={handleInputChange}
         />
-        <span className="font-medium">파일을 드래그하거나 클릭해서 선택하세요</span>
-        <span className="text-sm text-zinc-500 dark:text-zinc-400">.csv, .xlsx, .xls 지원</span>
-        {fileName && <span className="text-sm text-zinc-600 dark:text-zinc-300">선택한 파일: {fileName}</span>}
+        <span className="font-display text-lg text-ink">파일을 드래그하거나 클릭해서 선택하세요</span>
+        <span className="text-sm text-ink-muted">.csv, .xlsx, .xls 지원</span>
+        {fileName && <span className="text-sm text-ink">선택한 파일: {fileName}</span>}
       </label>
 
-      {isParsing && <p className="text-sm text-zinc-500">파싱 중...</p>}
+      {isParsing && <p className="text-sm text-ink-muted">파싱 중...</p>}
 
       {failureMessage && (
-        <p className="rounded-md bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950 dark:text-red-300">
+        <p className="rounded-lg border border-danger bg-danger-soft px-4 py-3 text-sm text-danger">
           {failureMessage}
         </p>
       )}
 
       {parseResult && (
         <div className="flex flex-col gap-6">
-          <p className="text-sm">
-            정상 <strong>{validProducts.length}</strong>행 / 오류 <strong>{errors.length}</strong>행
+          <p className="text-sm text-ink">
+            정상 <strong className="tabular text-accent">{validProducts.length}</strong>행 / 오류{" "}
+            <strong className="tabular text-danger">{errors.length}</strong>행
           </p>
 
           {validProducts.length > 0 && (
-            <div className="overflow-x-auto rounded-md border border-zinc-200 dark:border-zinc-800">
+            <div className="overflow-x-auto rounded-xl border border-border">
               <table className="w-full min-w-[560px] text-left text-sm">
-                <thead className="bg-zinc-50 dark:bg-zinc-900">
+                <thead className="bg-surface">
                   <tr>
                     <th className="px-3 py-2 font-medium">상품명</th>
                     <th className="px-3 py-2 font-medium">판매처</th>
@@ -104,10 +103,10 @@ export default function UploadPanel({ hasExistingData, onConfirm }: UploadPanelP
                 </thead>
                 <tbody>
                   {validProducts.slice(0, PREVIEW_LIMIT).map((product, index) => (
-                    <tr key={index} className="border-t border-zinc-200 dark:border-zinc-800">
+                    <tr key={index} className="border-t border-border">
                       <td className="px-3 py-2">{product.name}</td>
                       <td className="px-3 py-2">{product.platform}</td>
-                      <td className="px-3 py-2">{product.price.toLocaleString()}원</td>
+                      <td className="tabular px-3 py-2">{product.price.toLocaleString()}원</td>
                       <td className="px-3 py-2">{product.boxType}</td>
                       <td className="px-3 py-2">{product.combinationType}</td>
                     </tr>
@@ -115,7 +114,7 @@ export default function UploadPanel({ hasExistingData, onConfirm }: UploadPanelP
                 </tbody>
               </table>
               {validProducts.length > PREVIEW_LIMIT && (
-                <p className="px-3 py-2 text-xs text-zinc-500">
+                <p className="px-3 py-2 text-xs text-ink-muted">
                   외 {validProducts.length - PREVIEW_LIMIT}건 더 (전체는 대시보드에서 확인)
                 </p>
               )}
@@ -123,9 +122,9 @@ export default function UploadPanel({ hasExistingData, onConfirm }: UploadPanelP
           )}
 
           {errors.length > 0 && (
-            <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm dark:border-amber-900 dark:bg-amber-950">
-              <p className="mb-2 font-medium text-amber-800 dark:text-amber-300">오류 행</p>
-              <ul className="flex flex-col gap-1 text-amber-700 dark:text-amber-400">
+            <div className="rounded-lg border border-danger bg-danger-soft px-4 py-3 text-sm">
+              <p className="mb-2 font-medium text-danger">오류 행</p>
+              <ul className="flex flex-col gap-1 text-ink">
                 {errors.slice(0, PREVIEW_LIMIT).map((error, index) => (
                   <li key={index}>
                     {error.row}행: {error.reason}
@@ -133,15 +132,15 @@ export default function UploadPanel({ hasExistingData, onConfirm }: UploadPanelP
                 ))}
               </ul>
               {errors.length > PREVIEW_LIMIT && (
-                <p className="mt-2 text-xs text-amber-600">외 {errors.length - PREVIEW_LIMIT}건 더</p>
+                <p className="mt-2 text-xs text-danger">외 {errors.length - PREVIEW_LIMIT}건 더</p>
               )}
             </div>
           )}
 
           {hasExistingData && (
-            <fieldset className="flex flex-col gap-2 text-sm">
-              <legend className="mb-1 font-medium">기존 데이터 처리</legend>
-              <label className="flex items-center gap-2">
+            <fieldset className="flex flex-col gap-2 rounded-xl border border-border bg-surface p-4 text-sm">
+              <legend className="mb-1 px-1 font-medium text-ink">기존 데이터 처리</legend>
+              <label className="flex items-center gap-2 text-ink">
                 <input
                   type="radio"
                   name="upload-mode"
@@ -150,7 +149,7 @@ export default function UploadPanel({ hasExistingData, onConfirm }: UploadPanelP
                 />
                 덮어쓰기 (기존 데이터를 이번 업로드로 교체)
               </label>
-              <label className="flex items-center gap-2">
+              <label className="flex items-center gap-2 text-ink">
                 <input
                   type="radio"
                   name="upload-mode"
@@ -166,7 +165,7 @@ export default function UploadPanel({ hasExistingData, onConfirm }: UploadPanelP
             type="button"
             disabled={validProducts.length === 0}
             onClick={() => onConfirm(validProducts, mode)}
-            className="w-fit rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-[#383838] disabled:cursor-not-allowed disabled:opacity-40 dark:hover:bg-[#ccc]"
+            className="w-fit rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
           >
             대시보드 보기
           </button>

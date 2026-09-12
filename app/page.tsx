@@ -30,22 +30,25 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-1 flex-col items-center bg-zinc-50 px-6 py-16 dark:bg-black">
-      <header className="mb-10 flex w-full max-w-3xl items-center justify-between">
-        <h1 className="text-xl font-semibold">용돈박스+결합상품 경쟁 상품 분석</h1>
+    <div className="flex flex-1 flex-col items-center bg-canvas px-6 py-14">
+      <header className="mb-10 flex w-full max-w-5xl items-end justify-between gap-4">
+        <div>
+          <p className="text-sm text-ink-muted">용돈박스 시장 조사</p>
+          <h1 className="mt-1 font-display text-3xl text-ink">용돈박스+결합상품 경쟁 분석</h1>
+        </div>
         {view === "dashboard" && (
-          <div className="flex gap-2 text-sm">
+          <div className="flex shrink-0 gap-2 text-sm">
             <button
               type="button"
               onClick={() => setViewOverride("upload")}
-              className="rounded-full border border-zinc-300 px-4 py-2 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+              className="rounded-lg border border-border bg-surface px-4 py-2 text-ink transition-colors hover:border-accent"
             >
               새 파일 업로드
             </button>
             <button
               type="button"
               onClick={handleReset}
-              className="rounded-full border border-zinc-300 px-4 py-2 hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-900"
+              className="rounded-lg border border-border bg-surface px-4 py-2 text-ink-muted transition-colors hover:border-danger hover:text-danger"
             >
               데이터 초기화
             </button>

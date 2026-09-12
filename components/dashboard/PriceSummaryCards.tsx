@@ -17,14 +17,11 @@ export default function PriceSummaryCards({ products }: PriceSummaryCardsProps) 
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+    <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-5">
       {cards.map((card) => (
-        <div
-          key={card.label}
-          className="rounded-lg border border-zinc-200 px-4 py-3 dark:border-zinc-800"
-        >
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">{card.label}</p>
-          <p className="mt-1 text-lg font-semibold">{card.value}</p>
+        <div key={card.label} className="bg-surface px-5 py-4">
+          <p className="text-xs text-ink-muted">{card.label}</p>
+          <p className="tabular mt-1 text-xl font-semibold text-accent">{card.value}</p>
         </div>
       ))}
     </div>
