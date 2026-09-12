@@ -72,7 +72,7 @@ describe("getFieldFrequency", () => {
       { value: "봉투형", count: 2 },
       { value: "케이스형", count: 1 },
     ]);
-    expect(getFieldFrequency(products, "material")).toEqual([]);
+    expect(getFieldFrequency(products, "size")).toEqual([]);
   });
 });
 

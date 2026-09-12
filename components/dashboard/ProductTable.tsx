@@ -145,13 +145,13 @@ export default function ProductTable({ products }: ProductTableProps) {
         </span>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-border">
+      <div className="overflow-x-auto rounded-xl border border-border bg-surface">
         <table className="w-full min-w-[900px] text-left text-sm">
-          <thead className="bg-surface">
+          <thead className="border-b border-border">
             <tr>
               <th className="px-3 py-2 font-medium">상품명</th>
-              <th className="px-3 py-2 font-medium">판매처</th>
-              <th className="px-3 py-2">
+              <th className="whitespace-nowrap px-3 py-2 font-medium">판매처</th>
+              <th className="whitespace-nowrap px-3 py-2">
                 <SortableHeader
                   sortableKey="price"
                   label="가격"
@@ -160,11 +160,10 @@ export default function ProductTable({ products }: ProductTableProps) {
                   onToggle={toggleSort}
                 />
               </th>
-              <th className="px-3 py-2 font-medium">용돈박스형태</th>
-              <th className="px-3 py-2 font-medium">결합상품유형</th>
+              <th className="whitespace-nowrap px-3 py-2 font-medium">용돈박스형태</th>
+              <th className="whitespace-nowrap px-3 py-2 font-medium">결합상품유형</th>
               <th className="px-3 py-2 font-medium">구성</th>
-              <th className="px-3 py-2 font-medium">재질</th>
-              <th className="px-3 py-2">
+              <th className="whitespace-nowrap px-3 py-2">
                 <SortableHeader
                   sortableKey="reviewCount"
                   label="리뷰수"
@@ -173,7 +172,7 @@ export default function ProductTable({ products }: ProductTableProps) {
                   onToggle={toggleSort}
                 />
               </th>
-              <th className="px-3 py-2">
+              <th className="whitespace-nowrap px-3 py-2">
                 <SortableHeader
                   sortableKey="rating"
                   label="평점"
@@ -182,19 +181,18 @@ export default function ProductTable({ products }: ProductTableProps) {
                   onToggle={toggleSort}
                 />
               </th>
-              <th className="px-3 py-2 font-medium">URL</th>
+              <th className="whitespace-nowrap px-3 py-2 font-medium">URL</th>
             </tr>
           </thead>
           <tbody>
             {sorted.map((product, index) => (
               <tr key={index} className="border-t border-border">
                 <td className="px-3 py-2">{product.name}</td>
-                <td className="px-3 py-2">{product.platform}</td>
-                <td className="tabular px-3 py-2">{product.price.toLocaleString()}원</td>
-                <td className="px-3 py-2">{product.boxType}</td>
-                <td className="px-3 py-2">{product.combinationType}</td>
+                <td className="whitespace-nowrap px-3 py-2">{product.platform}</td>
+                <td className="tabular whitespace-nowrap px-3 py-2">{product.price.toLocaleString()}원</td>
+                <td className="whitespace-nowrap px-3 py-2">{product.boxType}</td>
+                <td className="whitespace-nowrap px-3 py-2">{product.combinationType}</td>
                 <td className="px-3 py-2">{product.composition ?? "-"}</td>
-                <td className="px-3 py-2">{product.material ?? "-"}</td>
                 <td className="tabular px-3 py-2">{product.reviewCount ?? "-"}</td>
                 <td className="tabular px-3 py-2">{product.rating ?? "-"}</td>
                 <td className="px-3 py-2">

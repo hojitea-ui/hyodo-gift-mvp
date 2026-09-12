@@ -58,9 +58,9 @@ export default function CompositionInsights({ products }: CompositionInsightsPro
           <table className="min-w-full text-left text-sm">
             <thead>
               <tr>
-                <th className="px-3 py-2 font-medium text-ink-muted">형태 \ 유형</th>
+                <th className="whitespace-nowrap px-3 py-2 font-medium text-ink-muted">형태 \ 유형</th>
                 {combinationTypeOrder.map((combinationType) => (
-                  <th key={combinationType} className="px-3 py-2 font-medium text-ink-muted">
+                  <th key={combinationType} className="whitespace-nowrap px-3 py-2 font-medium text-ink-muted">
                     {combinationType}
                   </th>
                 ))}
@@ -69,9 +69,9 @@ export default function CompositionInsights({ products }: CompositionInsightsPro
             <tbody>
               {boxTypeOrder.map((boxType) => (
                 <tr key={boxType} className="border-t border-border">
-                  <td className="px-3 py-2 font-medium text-ink">{boxType}</td>
+                  <td className="whitespace-nowrap px-3 py-2 font-medium text-ink">{boxType}</td>
                   {combinationTypeOrder.map((combinationType) => (
-                    <td key={combinationType} className="tabular px-3 py-2 text-ink-muted">
+                    <td key={combinationType} className="tabular whitespace-nowrap px-3 py-2 text-ink-muted">
                       {crossLookup.get(`${boxType}||${combinationType}`) ?? "-"}
                     </td>
                   ))}

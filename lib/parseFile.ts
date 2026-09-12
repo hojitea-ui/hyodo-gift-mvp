@@ -76,7 +76,7 @@ function buildProduct(mappedRow: RawRow, rowNumber: number): Product | ParseErro
     candidate[field] = text;
   }
 
-  for (const field of ["composition", "material", "size", "url", "memo"] as const) {
+  for (const field of ["composition", "size", "url", "memo"] as const) {
     const text = cleanText(mappedRow[field]);
     if (text !== undefined) candidate[field] = text;
   }

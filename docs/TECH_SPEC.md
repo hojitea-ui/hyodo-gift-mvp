@@ -62,7 +62,6 @@
 | 용돈박스형태 | `boxType` | string | ✅ | 예: 봉투형, 케이스형, 카드형, 기타 (자유 입력, 값 자체를 강제하지 않고 빈도 집계에만 사용) |
 | 결합상품유형 | `combinationType` | string | ✅ | 예: 지압봉, 화장품, 건강식품, 기타 (자유 입력) — 이번 MVP는 용돈박스 단독 상품은 조사 대상에서 제외하므로 항상 값이 있어야 한다 |
 | 구성 | `composition` | string | ⬜ | 예: "용돈박스 1개 + 지압봉 1개 + 파우치 + 설명서" (`+` 또는 `,`로 구분) |
-| 재질 | `material` | string | ⬜ | 결합상품의 재질 (있는 경우) — 예: 지압봉이면 옥/합성수지/기타 |
 | 사이즈 | `size` | string | ⬜ | |
 | 리뷰수 | `reviewCount` | number | ⬜ | |
 | 평점 | `rating` | number | ⬜ | |
@@ -86,7 +85,6 @@ export const ProductSchema = z.object({
   boxType: z.string().min(1),
   combinationType: z.string().min(1),
   composition: z.string().optional(),
-  material: z.string().optional(),
   size: z.string().optional(),
   reviewCount: z.number().optional(),
   rating: z.number().optional(),
@@ -218,7 +216,7 @@ async function parseFile(file: File): Promise<{
 - 서버 DB 도입: 여러 기기에서 데이터를 공유하거나, 사업 파트너와 함께 봐야 할 때 Supabase 등으로 교체 고려.
 - 다중 사용자/공유 링크: 파트너나 투자자에게 대시보드를 공유해야 할 시점에 인증 없는 읽기전용 공유 링크 기능 추가 고려.
 - 용돈박스 단독 상품까지 조사 범위 확장: 이번엔 "용돈박스+결합상품"으로만 좁혔지만, 나중에 단독 시장 규모도 궁금해지면 별도 조사/스키마로 다룬다.
-- 재질(material) 빈도 분석: 재질은 결합상품유형마다 의미가 달라(예: 지압봉은 옥/합성수지, 화장품은 해당 없음) 결합상품유형과 묶어서 봐야 의미가 있다. 이번 MVP는 단순 빈도 집계 범위에서 제외하고, 데이터 자체는 계속 수집(`material` 필드 유지)해두었다가 결합상품유형별 서브 분석이 필요해지면 별도로 다룬다.
+- 재질(material) 필드: 초기 스키마에 있었으나 결합상품유형마다 의미가 달라(지압봉은 옥/합성수지, 화장품은 해당 없음) 실제 조사(20건) 전부 미기재로 남아 제거했다. 특정 결합상품유형에서 재질 구분이 다시 필요해지면 그때 별도 필드로 추가한다.
 
 ---
 

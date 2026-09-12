@@ -23,12 +23,10 @@ describe("parseFile", () => {
       price: 15000,
       boxType: "봉투형",
       combinationType: "지압봉",
-      material: "옥",
       reviewCount: 120,
       rating: 4.5,
     });
     expect(second.reviewCount).toBe(45);
-    expect(third.material).toBeUndefined();
     expect(third.rating).toBeUndefined();
 
     expect(errors[0].row).toBe(5);
