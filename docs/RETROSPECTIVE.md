@@ -70,7 +70,7 @@
 지금까지의 컨텍스트 윈도우를 요약해서 다음 세션으로 넘기고 이어가는 방식을 쓰기로 했다. 퍼실님이 예시 페이지에서 강조하셨듯, 한 번에 큰 작업을 뭉쳐서 구현하는 것보다 작은 작업 단위로 나눈 뒤 순서대로 구현하고 확인해야 오류가 줄어들기 때문이다.
 
 - **세션 2**: 1단계 스캐폴딩 진행, PRD·기술명세서 초반부 작성 완료. 다음 작업(`lib/schema.ts`, `lib/parseFile.ts` 구현 + 샘플 CSV 파싱 검증)은 다음 세션으로 넘김.
-- **세션 3**: TECH_SPEC 11절 기준 5단계까지 진행.
+- **세션 3**: TECH_SPEC 11절 기준 4단계까지 진행.
   - ✅ Next.js + TypeScript + Tailwind 스캐폴딩
   - ✅ `lib/schema.ts`, `lib/parseFile.ts` + 샘플 CSV 검증
   - ✅ `lib/storage.ts` (localStorage 래퍼)
